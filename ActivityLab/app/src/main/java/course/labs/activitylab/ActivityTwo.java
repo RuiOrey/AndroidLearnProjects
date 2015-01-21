@@ -29,8 +29,17 @@ public class ActivityTwo extends Activity {
 	
 	// You will need to increment these variables' values when their
 	// corresponding lifecycle methods get called.
-	
 
+    int mCreate=0;
+    int mRestart=0;
+    int mStart=0;
+    int mResume=0;
+
+
+    TextView mTvCreate;
+    TextView mTvRestart;
+    TextView mTvStart;
+    TextView mTvResume;
 	
 	
 	// TODO: Create variables for each of the TextViews
@@ -45,7 +54,10 @@ public class ActivityTwo extends Activity {
 		// TODO: Assign the appropriate TextViews to the TextView variables
 		// Hint: Access the TextView by calling Activity's findViewById()
 		// textView1 = (TextView) findViewById(R.id.textView1);
-
+        mTvCreate =(TextView) findViewById(R.id.create);
+        mTvRestart = (TextView) findViewById(R.id.restart);
+        mTvStart = (TextView) findViewById(R.id.start);
+        mTvResume = (TextView) findViewById(R.id.resume );
 
 		
 		
@@ -60,7 +72,7 @@ public class ActivityTwo extends Activity {
 				// TODO:
 				// This function closes Activity Two
 				// Hint: use Context's finish() method
-
+                finish();
 				
 			
 			}
@@ -72,7 +84,10 @@ public class ActivityTwo extends Activity {
 			// TODO:
 			// Restore value of counters from saved state
 			// Only need 4 lines of code, one for every count variable
-
+            mCreate=savedInstanceState.getInt("mCreate");
+            mRestart=savedInstanceState.getInt("mRestart");
+            mResume=savedInstanceState.getInt("mResume");
+            mStart=savedInstanceState.getInt("mStart");
 
 			
 			
@@ -85,8 +100,9 @@ public class ActivityTwo extends Activity {
 
 		// TODO:
 		// Update the appropriate count variable
+        mCreate++;
 		// Update the user interface via the displayCounts() method
-
+        displayCounts();
 
 		
 		
@@ -103,6 +119,8 @@ public class ActivityTwo extends Activity {
 
 		// TODO:
 		// Update the appropriate count variable
+        mStart++;
+        displayCounts();
 		// Update the user interface
 
 
@@ -118,6 +136,8 @@ public class ActivityTwo extends Activity {
 		Log.i(TAG, "Entered the onResume() method");
 
 		// TODO:
+        mResume++;
+        displayCounts();
 		// Update the appropriate count variable
 		// Update the user interface
 
@@ -149,6 +169,8 @@ public class ActivityTwo extends Activity {
 		Log.i(TAG, "Entered the onRestart() method");
 
 		// TODO:
+        mRestart++;
+        displayCounts();
 		// Update the appropriate count variable
 		// Update the user interface
 
@@ -172,13 +194,18 @@ public class ActivityTwo extends Activity {
 		// Save counter state information with a collection of key-value pairs
 		// 4 lines of code, one for every count variable
 
+        savedInstanceState.putInt("mStart",mStart);
+        savedInstanceState.putInt("mRestart",mRestart);
+        savedInstanceState.putInt("mResume",mResume);
+        savedInstanceState.putInt("mCreate",mCreate);
 
 
-		
-		
-		
-		
-	}
+
+
+
+
+
+    }
 
 	// Updates the displayed counters
 	// This method expects that the counters and TextView variables use the
